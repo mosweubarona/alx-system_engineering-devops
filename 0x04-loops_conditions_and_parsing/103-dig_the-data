@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#displays ip and http code for each visitor sorted
+
+awk '{print $1,$9}' apache-access.log | sort | uniq -c | sort -nr
