@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# stop 4-to not using kill or killall
+
+pkill -f 7-highlander

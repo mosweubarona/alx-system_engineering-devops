@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#tterminate 7-high
+
+pkill -SIGKILL -f "7-highlander"
