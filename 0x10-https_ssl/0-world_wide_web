@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# change subdomain names
+func () {
+    dig_info=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | awk '{print $1" "$4" "$5}' | cut -d ";" -f 3)
+    record=$(echo $dig_info | cut -d " " -f 2)
+    ip=$(echo $dig_info | cut -d " " -f 3)
+    echo "The subdomain $2 is a $record record and points to $ip"
+}
+
+if [ $# -eq 1 ]; then
+    func "$1" "www"
+    func "$1" "lb-01"
+    func "$1" "web-01"
+    func "$1" "web-02"
+elif [ $# -eq 2 ]; then
+    func "$1" "$2"
+fi
