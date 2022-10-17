@@ -12,7 +12,7 @@ if __name__ == "__main__":
             x.get("id"): [{
                 "task": task.get("title"),
                 "completed": task.get("completed"),
-                "xname": x.get("xname")
+                "xname": x.get("username")
             } for task in requests.get(url + "todos",
-                                       params={"xId": x.get("id")}).json()]
+                                       params={"userId": x.get("id")}).json()]
             for x in users}, jsonfile)
